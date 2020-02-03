@@ -23,12 +23,12 @@ app.use(function validateBearerToken(req, res, next) {
 })
 
 
-app.get('/movie', function handleQueries(req, req) {
+app.get('/movie', function handleQueries(req, res) {
     let response = MOVIES;
 
     if (req.query.genre) {
         response = response.filter(movie =>
-            movie.genre.toLowerCase().includes(req.query.toLowerCase()))
+            movie.genre.toLowerCase().includes(req.query.genre.toLowerCase()))
     }
     if (req.query.avg_vote) {
         response = response.filter(movie =>
